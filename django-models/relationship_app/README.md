@@ -1,0 +1,1 @@
+this is Django project README file.

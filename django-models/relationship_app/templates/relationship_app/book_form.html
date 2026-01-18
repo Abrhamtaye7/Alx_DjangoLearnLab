@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>{{ action }} Book</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    <p>
+      <label>Title:</label>
+      <input name="title" value="{% if book %}{{ book.title }}{% endif %}">
+    </p>
+
+    {% if action == "Add" %}
+    <p>
+      <label>Author ID:</label>
+      <input name="author_id">
+    </p>
+    {% endif %}
+
+    <button type="submit">{{ action }}</button>
+  </form>
+</body>
+</html>
