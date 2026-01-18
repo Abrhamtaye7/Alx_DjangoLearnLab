@@ -15,32 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from django.urls import path
-from django.contrib.auth import views as auth_views
-from . import views
-from django.urls import path
-from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', auth_views.LoginView.as_view(template_name='blog/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(template_name='blog/logout.html'), name='logout'),
-    path('register/', views.register, name='register'),
-    path('profile/', views.profile, name='profile'),
-    path('', PostListView.as_view(), name='post-list'),  # List all posts
-    path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),  # View details of a single post
-    path('post/new/', PostCreateView.as_view(), name='post-create'),  # Create a new post
-    path('post/<int:pk>/update/', PostUpdateView.as_view(), name='post-update'),  # Update an existing post
-    path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),  # Delete a post
+    path('', include('blog.urls)),
 ]
-
-
-
-urlpatterns = [
-
-]
-
- 
-
- 

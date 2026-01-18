@@ -1,6 +1,12 @@
-<h1>{% if post %}Edit Post{% else %}Create Post{% endif %}</h1>
-<form method="POST">
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Post</h1>
+
+  <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Save</button>
-</form>
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}
+
